@@ -1,0 +1,57 @@
+<h1 class="section-title">TASK-3</h1>
+<a href="/index.html">Вернуться на главную</a>
+<p>Перепиши функцию makeTransaction() так, чтобы она не использовала callback-функции onSuccess и onError, а принимала
+всего один параметр transaction и возвращала промис.<br>
+<br>
+const randomIntegerFromInterval = (min, max) => {<br>
+return Math.floor(Math.random() * (max - min + 1) + min);<br>
+};<br>
+<br>
+const makeTransaction = (transaction, onSuccess, onError) => {<br>
+const delay = randomIntegerFromInterval(200, 500);<br>
+<br>
+setTimeout(() => {<br>
+const canProcess = Math.random() > 0.3;<br>
+<br>
+if (canProcess) {<br>
+onSuccess(transaction.id, delay);<br>
+} else {<br>
+onError(transaction.id);<br>
+}<br>
+}, delay);<br>
+};<br>
+<br>
+const logSuccess = (id, time) => {<br>
+console.log(`Transaction ${id} processed in ${time}ms`);<br>
+};<br>
+<br>
+const logError = id => {<br>
+console.warn(`Error processing transaction ${id}. Please try again later.`);<br>
+};<br>
+<br>
+/*<br>
+* Работает так<br>
+*/<br>
+makeTransaction({ id: 70, amount: 150 }, logSuccess, logError);<br>
+makeTransaction({ id: 71, amount: 230 }, logSuccess, logError);<br>
+makeTransaction({ id: 72, amount: 75 }, logSuccess, logError);<br>
+makeTransaction({ id: 73, amount: 100 }, logSuccess, logError);<br>
+/*<br>
+* Должно работать так<br>
+*/<br>
+makeTransaction({ id: 70, amount: 150 })<br>
+.then(logSuccess)<br>
+.catch(logError);<br>
+<br>
+makeTransaction({ id: 71, amount: 230 })<br>
+.then(logSuccess)<br>
+.catch(logError);<br>
+<br>
+makeTransaction({ id: 72, amount: 75 })<br>
+.then(logSuccess)<br>
+.catch(logError);<br>
+<br>
+makeTransaction({ id: 73, amount: 100 })<br>
+.then(logSuccess)<br>
+.catch(logError);</p>
+<script src="/js/task-3.js"></script>

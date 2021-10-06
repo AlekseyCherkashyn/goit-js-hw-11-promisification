@@ -1,0 +1,16 @@
+.logo {
+  font-family: var(--title-font);
+  font-size: 24px;
+  line-height: 1.16;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  color: var(--accent-cl);
+  text-decoration: none;
+
+  &--white-cl {
+    color: var(--alt-text-cl);
+  }
+  &--black-cl {
+    color: var(--alt-title-cl);
+  }
+}

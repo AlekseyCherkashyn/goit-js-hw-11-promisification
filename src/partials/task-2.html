@@ -1,0 +1,35 @@
+<h1 class="section-title">TASK-2</h1>
+<a href="/index.html">Вернуться на главную</a>
+<p>Перепиши функцию toggleUserState() так, чтобы она не использовала callback-функцию callback,<br>
+а принимала всего два параметра allUsers и userName и возвращала промис.<br>
+<br>
+const users = [<br>
+{ name: 'Mango', active: true },<br>
+{ name: 'Poly', active: false },<br>
+{ name: 'Ajax', active: true },<br>
+{ name: 'Lux', active: false },<br>
+];<br>
+<br>
+const toggleUserState = (allUsers, userName, callback) => {<br>
+const updatedUsers = allUsers.map(user =><br>
+user.name === userName ? { ...user, active: !user.active } : user,<br>
+);<br>
+<br>
+callback(updatedUsers);<br>
+};<br>
+<br>
+const logger = updatedUsers => console.table(updatedUsers);<br>
+<br>
+/*<br>
+* Сейчас работает так<br>
+*/<br>
+toggleUserState(users, 'Mango', logger);<br>
+toggleUserState(users, 'Lux', logger);<br>
+<br>
+/*<br>
+* Должно работать так<br>
+*/<br>
+toggleUserState(users, 'Mango').then(logger);<br>
+toggleUserState(users, 'Lux').then(logger);<br>
+<br></p>
+<script src="/js/task-2.js"></script>

@@ -1,0 +1,36 @@
+.section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @media screen and (min-width: 1200px) {
+    padding-top: 94px;
+    padding-bottom: 94px;
+  }
+}
+
+.section__title {
+  margin-bottom: 30px;
+  font-size: 28px;
+  line-height: 1.17;
+  text-align: center;
+  color: var(--title-cl);
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 50px;
+    font-size: 36px;
+  }
+}
+
+.section__subtitle {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--title-cl);
+  text-transform: uppercase;
+
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
+}

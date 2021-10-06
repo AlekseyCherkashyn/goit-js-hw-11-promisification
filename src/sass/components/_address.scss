@@ -1,0 +1,26 @@
+.address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-style: inherit;
+  padding-top: 20px;
+  color: var(--alt-title-cl);
+
+  @media screen and (min-width: 1200px) {
+    align-items: flex-start;
+  }
+}
+
+.address__item {
+  padding-top: 8px;
+  opacity: 0.6;
+
+  &__item--wt-cl {
+    color: var(--alt-title-cl-transp);
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-top: 9px;
+  }
+}
