@@ -1,18 +1,39 @@
-// Test import of a JavaScript module
-import { example } from '@/js/example'
+import './sass/main.scss';
+const year = new Date().getFullYear();
+const thisYear = new Date(year, 0,1).getTime();
+const newYear = new Date(year + 1, 0, 1).getTime();
+const month = new Date().getMonth();
 
-// Test import of an asset
-import webpackLogo from '@/images/webpack-logo.svg'
+// countdown
+let timer = setInterval(function() {
 
-// Test import of styles
-import '@/styles/index.scss'
+  // get today's date
+  const today = new Date().getTime();
 
-// Appending to the DOM
-const logo = document.createElement('img')
-logo.src = webpackLogo
+  // get the difference
+  let diff;
+  if(month > 6) {
+    diff = newYear - today;
+  } else {
+    diff = thisYear - today;
+  }
 
-const heading = document.createElement('h1')
-heading.textContent = example()
+  // math
+  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-const app = document.querySelector('#root')
-app.append(logo, heading)
+  // display
+  document.getElementById("timer").innerHTML =
+    "<div class=\"days\"> \
+  <div class=\"numbers\">" + days + "</div>days</div> \
+<div class=\"hours\"> \
+  <div class=\"numbers\">" + hours + "</div>hours</div> \
+<div class=\"minutes\"> \
+  <div class=\"numbers\">" + minutes + "</div>minutes</div> \
+<div class=\"seconds\"> \
+  <div class=\"numbers\">" + seconds + "</div>seconds</div> \
+</div>";
+
+}, 1000);
